@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="./script/script.js"></script> -->
+    <script src="./script/script.js"></script>
     <link rel="stylesheet" href="./style/style.css">
     <title>Document</title>
 </head>
 <body>
-    <header><h1>Rock, paper, scissors</h1></header>
+    <header>
+        <button class="reset">reset</button>
+        <h1>Rock, paper, scissors</h1></header>
     <main>
         <div class="game-board">
             <div class="half-screen">
@@ -18,16 +20,16 @@
                     <h3 class="points">Points ici</h3>
                 </div>
                 <div class="play-board">
-                    <div class="possible-choices">
+                    <div id="choice-player" class="possible-choices">
                         <div class="choice"><img src="./static/pierre.png" alt="Icone rock" class="image rock"></div>
                         <div class="choice"><img src="./static/papier.png" alt="Icone paper" class="image paper"></div>
                         <div class="choice"><img src="./static/ciseaux.png" alt="Icone scissor" class="image scissors"></div>
                     </div>
                     <div class="answer">
-                        <div class="reponse">
-                            <img src="./static/pierre.png" alt="Icone rock" class="image rock hidden">
-                            <img src="./static/papier.png" alt="Icone paper" class="image paper hidden">
-                            <img src="./static/ciseaux.png" alt="Icone scissor" class="image scissors hidden">
+                        <div id="rep-player" class="reponse">
+                            <img src="./static/pierre.png" alt="Icone rock" class="image img-answer ans-player rock shown">
+                            <img src="./static/papier.png" alt="Icone paper" class="image img-answer ans-player paper hidden">
+                            <img src="./static/ciseaux.png" alt="Icone scissor" class="image img-answer ans-player scissors hidden">
                         </div>                        
                     </div>
                 </div>
@@ -39,13 +41,13 @@
                 </div>
                 <div class="play-board">
                     <div class="answer">
-                        <div class="reponse">
-                            <img src="./static/pierre.png" alt="Icone rock" class="image rock hidden">
-                            <img src="./static/papier.png" alt="Icone paper" class="image paper hidden">
-                            <img src="./static/ciseaux.png" alt="Icone scissor" class="image scissors hidden">
+                        <div id="rep-computer" class="reponse">
+                            <img src="./static/pierre.png" alt="Icone rock" class="image img-answer ans-computer rock hidden">
+                            <img src="./static/papier.png" alt="Icone paper" class="image img-answer ans-computer paper hidden">
+                            <img src="./static/ciseaux.png" alt="Icone scissor" class="image img-answer ans-computer scissors hidden">
                         </div>                        
                     </div>
-                    <div class="possible-choices">
+                    <div id="choice-computer" class="possible-choices">
                         <div class="choice"><img src="./static/pierre.png" alt="Icone rock" class="image rock"></div>
                         <div class="choice"><img src="./static/papier.png" alt="Icone paper" class="image paper"></div>
                         <div class="choice"><img src="./static/ciseaux.png" alt="Icone scissor" class="image scissors"></div>

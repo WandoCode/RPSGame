@@ -1,3 +1,35 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.getElementById("choice-player").addEventListener("click", event => makePlayerChoice(event));
+});
+
+function makePlayerChoice(event) {
+    console.log(event);   
+    hideAllAnswer();
+
+    const elementToDisplay = event.target.classList[1];
+
+    displayElement(elementToDisplay);
+}
+
+function hideAllAnswer(){
+
+    const allAnswer = document.getElementsByClassName("img-answer");
+
+    for(let i = 0; i < allAnswer.length; i++){
+        allAnswer[i].className = allAnswer[i].className.replace("shown", "hidden");
+    }
+}
+
+function displayElement(element){
+    const whatDisplay = document.getElementsByClassName("ans-player");
+    for (let i = 0; i < whatDisplay.length; i++){
+        if (whatDisplay[i].className.includes(element)){
+            whatDisplay[i].className = whatDisplay[i].className.replace("hidden", "shown");
+        }
+    }
+}
+
 function computerPlay() {
     const rdmNbr = Math.random();
     let rep;
@@ -51,7 +83,7 @@ function game(){
 
     for(let i = 0; i < 5; i++){
         const computerChoice = computerPlay();
-        const playerChoice = prompt("Write 'paper', 'rock' or 'scissors");
+        const playerChoice = "A implementer";
 
         return resolveRound(playerChoice, computerChoice);
     }
