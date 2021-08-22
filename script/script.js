@@ -1,17 +1,60 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    hideAllAnswer();
     document.getElementById("choice-player").addEventListener("click", event => makePlayerChoice(event));
+    document.getElementsByClassName("reset")[0].addEventListener("click", event => resetGame(event));
 });
 
+function resetGame(event){
+    hideAllAnswer();
+    document.getElementById("points-player").innerHTML = 0;
+    document.getElementById("points-computer").innerHTML = 0;
+
+    
+}
 function makePlayerChoice(event) {
     console.log(event);   
     hideAllAnswer();
 
-    const elementToDisplay = event.target.classList[1];
+    const playerChoice = event.target.classList[1];
 
-    displayElement(elementToDisplay);
+    displayElement(playerChoice, "player");
+
+    const computerChoice = computerPlay();
+    
+    displayElement(computerChoice, "computer");
+
+    resolution(playerChoice, computerChoice);
+
 }
 
+function resolution (playerChoice, computerChoice){
+    const winner = resolveRound(playerChoice, computerChoice);
+    if (winner === "Player wins!"){
+        incrementScore("player");
+    }
+    else if (winner === "Computer wins!"){
+        incrementScore("computer");
+    }
+
+    writeWinner(winner);
+}
+
+function writeWinner(winner){
+    const winnerDisplay = document.getElementsByClassName("resolution");
+    winnerDisplay[0].innerHTML = winner;
+}
+
+function incrementScore(who){
+    let pointsWho;
+    if (who === "player"){
+        pointsWho = "points-player";
+    }
+    else{
+        pointsWho = "points-computer";
+    }
+    const elementScore = document.getElementById(pointsWho);
+    elementScore.innerHTML = +elementScore.innerHTML + 1;
+}
 function hideAllAnswer(){
 
     const allAnswer = document.getElementsByClassName("img-answer");
@@ -21,8 +64,15 @@ function hideAllAnswer(){
     }
 }
 
-function displayElement(element){
-    const whatDisplay = document.getElementsByClassName("ans-player");
+function displayElement(element, who){
+    let classNamewho;
+    if (who === "player"){
+        classNamewho = "ans-player";
+    }
+    else{
+        classNamewho = "ans-computer";
+    }
+    const whatDisplay = document.getElementsByClassName(classNamewho);
     for (let i = 0; i < whatDisplay.length; i++){
         if (whatDisplay[i].className.includes(element)){
             whatDisplay[i].className = whatDisplay[i].className.replace("hidden", "shown");
@@ -51,7 +101,7 @@ function resolveRound(playerChoice, computerChoice){
     const computer = computerChoice.toUpperCase();
 
     if (player === computer){
-        return "tie";
+        return "Tie !";
     }
     if(player === "ROCK"){
         if (computer === "PAPER"){
@@ -66,27 +116,15 @@ function resolveRound(playerChoice, computerChoice){
             return "Player wins!";
         }
         else{
-            return "computer wins!";
+            return "Computer wins!";
         }
     }
     else if(player === "SCISSORS"){
         if(computer === "ROCK"){
-            return "computer wins!";
+            return "Computer wins!";
         }
         else{
             return "Player wins!";
         }
     }
 }
-
-function game(){
-
-    for(let i = 0; i < 5; i++){
-        const computerChoice = computerPlay();
-        const playerChoice = "A implementer";
-
-        return resolveRound(playerChoice, computerChoice);
-    }
-}
-
-game();
