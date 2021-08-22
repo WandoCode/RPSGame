@@ -13,22 +13,28 @@ function resetGame(event){
 }
 
 function makePlayerChoice(event) {
-  
+    /*Resolve the Game following the player answer*/
     hideAllAnswer();
 
+    /* Catch player choice and display it at the screen*/
     const playerChoice = event.target.classList[1];
-
     displayElement(playerChoice, "player");
 
+    /* Catch computer choice and display it at the screen*/
     const computerChoice = computerPlay();
-    
     displayElement(computerChoice, "computer");
 
+    /*Look who won the game and upgrade screen accordingly */
     resolution(playerChoice, computerChoice);
 }
 
 function resolution (playerChoice, computerChoice){
+    /* Compare the 2 string following Rock Paper Scissors rules and modify screen accordingly */
+
+    /* Return the winner */
     const winner = resolveRound(playerChoice, computerChoice);
+
+    /* Increment winner's score */
     if (winner === "Player wins!"){
         incrementScore("player");
     }
@@ -36,15 +42,12 @@ function resolution (playerChoice, computerChoice){
         incrementScore("computer");
     }
 
-    writeWinner(winner);
-}
-
-function writeWinner(winner){
-    const winnerDisplay = document.getElementsByClassName("resolution");
-    winnerDisplay[0].innerHTML = winner;
+    /* Write the game's resolution at the screen */
+    document.getElementsByClassName("resolution").innerHTML = winner;
 }
 
 function incrementScore(who){
+    /* Update the score of 'who' */
     let pointsWho;
     if (who === "player"){
         pointsWho = "points-player";
@@ -55,8 +58,9 @@ function incrementScore(who){
     const elementScore = document.getElementById(pointsWho);
     elementScore.innerHTML = +elementScore.innerHTML + 1;
 }
-function hideAllAnswer(){
 
+function hideAllAnswer(){
+    /* Make sure no answer is still displayed */
     const allAnswer = document.getElementsByClassName("img-answer");
 
     for(let i = 0; i < allAnswer.length; i++){
@@ -65,6 +69,7 @@ function hideAllAnswer(){
 }
 
 function displayElement(element, who){
+    /* Display answer 'element' for player 'who' */
     let classNamewho;
     if (who === "player"){
         classNamewho = "ans-player";
@@ -72,6 +77,8 @@ function displayElement(element, who){
     else{
         classNamewho = "ans-computer";
     }
+
+    /* Get DOM element to display it*/
     const whatDisplay = document.getElementsByClassName(classNamewho);
     for (let i = 0; i < whatDisplay.length; i++){
         if (whatDisplay[i].className.includes(element)){
@@ -81,6 +88,7 @@ function displayElement(element, who){
 }
 
 function computerPlay() {
+    /* Return Rock, Paper or Scissors with 1/3 of probaility each*/
     const rdmNbr = Math.random();
     let rep;
     if (rdmNbr < 1/3){
@@ -96,7 +104,7 @@ function computerPlay() {
 }
 
 function resolveRound(playerChoice, computerChoice){
-
+    /* Compare answer of the 2 player and return the winner, or 'tie' */
     const player = playerChoice.toUpperCase();
     const computer = computerChoice.toUpperCase();
 
