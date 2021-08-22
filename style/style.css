@@ -1,4 +1,56 @@
-.game-board{
+body{
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+header{
+    flex-grow: 1;
+}
+
+main{
+    flex-grow:10;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+}
+.game-board{
+    flex-grow: 7;
+    display: flex;
+}
+
+.half-screen{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.player-heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.play-board{
+    display: flex;
+}
+
+.possible-choices{
+    flex-grow: 1;
+}
+
+.answer{
+    flex-grow: 1;
+
+}
+.resolution{
+    background-color: red;
+    flex-grow: 1;
+}
+.image{
+    width: 200px;
+    height: auto;
+}
+
+.hidden{
+    display: none;
 }
