@@ -13,6 +13,12 @@ function resetGame(event){
 }
 
 function makePlayerChoice(event) {
+
+    /* Make sure the user cilcked on the picture */
+    if(event.target.className === "choice"){
+        return;
+    }
+    
     /*Resolve the Game following the player answer*/
     hideAllAnswer();
 
@@ -34,16 +40,53 @@ function resolution (playerChoice, computerChoice){
     /* Return the winner */
     const winner = resolveRound(playerChoice, computerChoice);
 
-    /* Increment winner's score */
+    /* Increment winner's score and adapt picture border color*/
     if (winner === "Player wins!"){
         incrementScore("player");
+        adaptPictureAnswer("player");
     }
     else if (winner === "Computer wins!"){
         incrementScore("computer");
+        adaptPictureAnswer("computer");
+    }
+    else {
+        adaptPictureAnswer("tie")
     }
 
     /* Write the game's resolution at the screen */
-    document.getElementsByClassName("resolution").innerHTML = winner;
+    document.getElementsByClassName("resolution")[0].innerHTML = winner;
+}
+
+function adaptPictureAnswer(winner){
+    /* Change style of answer's picture depending of the winner */
+
+    const pict_player = document.getElementsByClassName("ans-player");
+    const pict_computer = document.getElementsByClassName("ans-computer");
+
+    if (winner === "player"){
+        for (let i = 0; i < pict_player.length; i++){
+            pict_player[i].className = pict_player[i].className.replace("border-bad", "border-good");
+            pict_computer[i].className = pict_computer[i].className.replace("border-good", "border-bad");
+            pict_player[i].className = pict_player[i].className.replace("border-tie", "border-good");
+            pict_computer[i].className = pict_computer[i].className.replace("border-tie", "border-bad");
+        }
+    }
+    if (winner === "computer"){
+        for (let i = 0; i < pict_computer.length; i++){
+            pict_computer[i].className = pict_computer[i].className.replace("border-bad", "border-good");
+            pict_player[i].className = pict_player[i].className.replace("border-good", "border-bad");
+            pict_computer[i].className = pict_computer[i].className.replace("border-tie", "border-good");
+            pict_player[i].className = pict_player[i].className.replace("border-tie", "border-bad");
+        }
+    }
+    if (winner === "tie"){
+        for (let i = 0; i < pict_computer.length; i++){
+            pict_computer[i].className = pict_computer[i].className.replace("border-bad", "border-tie");
+            pict_player[i].className = pict_player[i].className.replace("border-good", "border-tie");
+            pict_computer[i].className = pict_computer[i].className.replace("border-good", "border-tie");
+            pict_player[i].className = pict_player[i].className.replace("border-bad", "border-tie");
+        }
+    }
 }
 
 function incrementScore(who){
