@@ -1,0 +1,4 @@
+.game-board{
+    display: flex;
+    align-items: stretch;
+}
