@@ -5,14 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function resetGame(event){
+    /*Reset score and answer*/
     hideAllAnswer();
     document.getElementById("points-player").innerHTML = 0;
-    document.getElementById("points-computer").innerHTML = 0;
-
-    
+    document.getElementById("points-computer").innerHTML = 0; 
+    document.getElementsByClassName("resolution")[0].innerHTML = "Let's play!"
 }
+
 function makePlayerChoice(event) {
-    console.log(event);   
+  
     hideAllAnswer();
 
     const playerChoice = event.target.classList[1];
@@ -24,7 +25,6 @@ function makePlayerChoice(event) {
     displayElement(computerChoice, "computer");
 
     resolution(playerChoice, computerChoice);
-
 }
 
 function resolution (playerChoice, computerChoice){
