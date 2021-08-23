@@ -3,18 +3,50 @@ body{
     flex-direction: column;
     height: 100vh;
     margin: 0;
+    font-family: 'Klee One', cursive;
+    background-color:#8C96D8;
+    color: #e0cec7;
 }
 
 header{
     flex-grow: 1;
+    display: flex;
+    background-color: #4D568C;
+    color: #e0cec7;
 }
+h1{
+    flex-grow: 9;
+    text-align: center;
+    padding-right: 150px;
+    font-family: 'Rampart One', cursive;
+}
+.reset{
+    flex-grow: 1;
+    border: none;
+    font-family: 'Klee One', cursive;
+    font-size: 25px;
+    background-color: #4D568C;
+    color: #e0cec7;
+}
+.reset:hover{
+    box-shadow: inset -10px -10px 20px #8C96D8, inset 10px 10px 20px #8C96D8;
 
+}
 main{
     flex-grow:10;
-    background-color: bisque;
     display: flex;
     flex-direction: column;
 }
+
+h2{
+    font-size: 35px;;
+}
+
+.points{
+    font-size: 25px;
+    margin: 0;
+}
+
 .game-board{
     flex-grow: 7;
     display: flex;
@@ -44,8 +76,10 @@ main{
     justify-content: center;
 }
 .resolution{
-    background-color: red;
     flex-grow: 1;
+    margin: auto;
+    font-size: 25px;
+    font-weight: bolder;
 }
 .image{
     width: 200px;
@@ -57,11 +91,11 @@ main{
 }
 
 .border-good{
-    border: green solid 2px;
+    border: green solid 4px;
 }
 
 .border-bad{
-    border: red solid 2px;
+    border: red solid 4px;
 }
 
 .hidden{
@@ -74,14 +108,19 @@ main{
 
 .light-border{
     border-radius: 10px;
-    border: white 2px solid;
+    border: white 4px solid;
+}
+
+.light-border-fix{
+    border-radius: 10px;
+    border: white 4px solid;
 }
 
 .light-border:hover{
     border-radius: 10px;
-    border: black 2px solid;
+    border: black 4px solid;
 }
 
 .border-tie{
-    border: blue 2px solid;
+    border: blue 4px solid;
 }
